@@ -10,6 +10,13 @@ wines = [
 ]
 
 
+wines = [
+    {"id": 0, "alcohol": 8, "quality": 10},
+    {"id": 1, "alcohol": 12, "quality": 8},
+    {"id": 2, "alcohol": 10.5, "quality": 9},
+]
+
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, from TechLabs!</p>"
