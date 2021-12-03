@@ -1,3 +1,4 @@
+import os
 import json
 from flask import Flask, jsonify, request, Response
 import pandas as pd
@@ -11,8 +12,9 @@ wines = [
     {"id": 2, "alcohol": 10.5, "quality": 9},
 ]
 
-
-df = pd.read_csv("winequality-white.csv", sep=";")
+module_dir = os.path.abspath(os.path.dirname(__file__))
+file_path = os.path.join(module_dir, "winequality-white.csv")
+df = pd.read_csv(file_path, sep=";")
 
 
 @app.route("/")
