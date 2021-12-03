@@ -17,8 +17,6 @@ file_path = os.path.join(module_dir, "winequality-white.csv")
 df = pd.read_csv(file_path, sep=";")
 
 
-df = pd.read_csv("winequality-white.csv", sep=";")
-
 @app.route("/")
 def hello_world():
     return "<p>Hello, from TechLabs!</p>"
@@ -38,3 +36,14 @@ def get_wine_by_id():
 
     row = df.iloc[[id]]
     return Response(row.to_json(orient="index"), mimetype="application/json")
+
+
+@app.route("/api/wines/filter", methods=["GET"])
+def filter_wines():
+    requested_quality = request.args.get("quality")
+    if requested_quality:
+        filtered_data = df[df.quality == int(requested_quality)]
+        return Response(
+            filtered_data.to_json(orient="index"), mimetype="application/json"
+        )
+    return []
