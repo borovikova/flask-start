@@ -1,4 +1,6 @@
-from flask import Flask, jsonify, request
+import json
+from flask import Flask, jsonify, request, Response
+import pandas as pd
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -10,6 +12,9 @@ wines = [
 ]
 
 
+df = pd.read_csv("winequality-white.csv", sep=";")
+
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, from TechLabs!</p>"
@@ -17,7 +22,7 @@ def hello_world():
 
 @app.route("/api/wines/all", methods=["GET"])
 def return_all():
-    return jsonify(wines)
+    return Response(df.to_json(orient="index"), mimetype="application/json")
 
 
 @app.route("/api/wines", methods=["GET"])
@@ -27,10 +32,5 @@ def get_wine_by_id():
     else:
         return "Error: No id field provided. Please specify an id."
 
-    results = []
-
-    for wine in wines:
-        if wine["id"] == id:
-            results.append(wine)
-
-    return jsonify(results)
+    row = df.iloc[[id]]
+    return Response(row.to_json(orient="index"), mimetype="application/json")
