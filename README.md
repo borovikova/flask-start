@@ -15,6 +15,8 @@ Deploy on https://www.pythonanywhere.com/
 
 Tutorials:
 
+https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application
+
 https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask 
 
 https://blog.pythonanywhere.com/121/
