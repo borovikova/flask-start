@@ -3,7 +3,13 @@
 # How to run
 
 1. Install Flask and pandas using `pip install <package name>`
-2. Export Flask app name variable. Depending on yur system the command can look like: `export FLASK_APP=flask_app` (Bash) or `set FLASK_APP=flask_app` (CMD) or `$env:FLASK_APP = "flask_app"` (Powershell)
+2. Export Flask app name variable.
+
+Depending on yur system the command can look like: 
+- `export FLASK_APP=flask_app` (Bash) 
+- `set FLASK_APP=flask_app` (CMD) 
+- `$env:FLASK_APP = "flask_app"` (Powershell)
+
 3. Run with `flask run`
 
 Documentation: https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application
